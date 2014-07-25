@@ -14,6 +14,8 @@ app.controller('SpecificMatchCtrl', function($scope, $state, $ionicModal, $rootS
   $scope.sendMessage = function() {
     var currentUser = $rootScope.currentUser.fb_id;
     socket.emit('chat message', {msg: $scope.msg.msg, to: $stateParams.matchId, from: currentUser});
+    var li = $('<li>').addClass('item').text($scope.msg.msg);
+    $('ul').append(li);
     $scope.msg.msg = '';
     return false;
   };
